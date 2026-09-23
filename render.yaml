@@ -1,0 +1,39 @@
+databases:
+  - name: ms-exam-db
+    plan: free
+    databaseName: ms_exam
+    user: ms_exam_user
+    region: oregon
+    postgresMajorVersion: "16"
+
+services:
+  - type: web
+    name: ms-exam-api
+    runtime: docker
+    plan: free
+    region: oregon
+    repo: https://github.com/<owner>/<repo>
+    image:
+      url: ghcr.io/<owner>/<repo>:latest
+    healthCheckPath: /actuator/health
+    envVars:
+      - key: DB_HOST
+        fromDatabase:
+          name: ms-exam-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: ms-exam-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: ms-exam-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: ms-exam-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: ms-exam-db
+          property: password

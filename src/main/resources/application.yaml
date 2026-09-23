@@ -3,8 +3,8 @@ spring:
     name: ms_exam
 
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:3490/test_db}
-    username: ${DB_USERNAME:postgres}
+    url: ${DB_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:3490}/${DB_NAME:test_db}}
+    username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
 
   jpa:
@@ -29,3 +29,12 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
