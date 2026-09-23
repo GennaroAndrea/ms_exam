@@ -12,9 +12,10 @@ services:
     runtime: docker
     plan: free
     region: oregon
-    repo: https://github.com/<owner>/<repo>
+    repo: https://github.com/GennaroAndrea/ms_exam
     image:
-      url: ghcr.io/<owner>/<repo>:latest
+      # GHCR/Docker require an all-lowercase repository path, even if the GitHub owner/repo has mixed case
+      url: ghcr.io/gennaroandrea/ms_exam:latest
     healthCheckPath: /actuator/health
     envVars:
       - key: DB_HOST
