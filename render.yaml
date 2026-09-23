@@ -9,10 +9,9 @@ databases:
 services:
   - type: web
     name: ms-exam-api
-    runtime: docker
+    runtime: image
     plan: free
     region: oregon
-    repo: https://github.com/GennaroAndrea/ms_exam
     image:
       # GHCR/Docker require an all-lowercase repository path, even if the GitHub owner/repo has mixed case
       url: ghcr.io/gennaroandrea/ms_exam:latest
