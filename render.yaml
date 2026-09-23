@@ -13,7 +13,6 @@ services:
     plan: free
     region: oregon
     image:
-      # GHCR/Docker require an all-lowercase repository path, even if the GitHub owner/repo has mixed case
       url: ghcr.io/gennaroandrea/ms_exam:latest
     healthCheckPath: /actuator/health
     envVars:
